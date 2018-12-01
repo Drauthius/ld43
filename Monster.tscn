@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Monster.gd" type="Script" id=2]
+
+[node name="Monster" instance=ExtResource( 1 )]
+
+script = ExtResource( 2 )
+health = 60
+move_speed = 150
+attack_damage = Vector2( 5, 10 )
+
+
