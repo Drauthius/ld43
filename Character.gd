@@ -49,7 +49,7 @@ func process_movement(delta):
 		return
 
 	var vel = target_position - get_global_transform().origin
-	vel.y = 0
+	vel.y = -1
 	if vel.length_squared() < 0.01:
 		target = null
 		target_position = null
