@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/looperman-l-2915069-0142880-japanese-melody-v2-by-shikizuu.wav-45a35499c1763a79384ae4d44bb811dd.sample"
+
+[deps]
+
+source_file="res://assets/sounds/music/samples/looperman-l-2915069-0142880-japanese-melody-v2-by-shikizuu.wav"
+dest_files=[ "res://.import/looperman-l-2915069-0142880-japanese-melody-v2-by-shikizuu.wav-45a35499c1763a79384ae4d44bb811dd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

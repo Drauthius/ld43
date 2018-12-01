@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/looperman-l-1297038-0137750-thedrumbank-juice-wrld-x-mocha-jones-japanese-guitar.wav-69ce077cf3be8ec20023e56a82c78356.sample"
+
+[deps]
+
+source_file="res://assets/sounds/music/samples/looperman-l-1297038-0137750-thedrumbank-juice-wrld-x-mocha-jones-japanese-guitar.wav"
+dest_files=[ "res://.import/looperman-l-1297038-0137750-thedrumbank-juice-wrld-x-mocha-jones-japanese-guitar.wav-69ce077cf3be8ec20023e56a82c78356.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

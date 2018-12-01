@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/looperman-l-1297038-0140314-pluck-you-mocha-jones-japanese-guitar-pluck.wav-61d0863da228f6f7ce5d4d12cf6437bb.sample"
+
+[deps]
+
+source_file="res://assets/sounds/music/samples/looperman-l-1297038-0140314-pluck-you-mocha-jones-japanese-guitar-pluck.wav"
+dest_files=[ "res://.import/looperman-l-1297038-0140314-pluck-you-mocha-jones-japanese-guitar-pluck.wav-61d0863da228f6f7ce5d4d12cf6437bb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

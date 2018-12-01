@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/looperman-l-1272961-0132303-tidal-japanese-arp.wav-2a76a72bb7ab2227ac0ee33c1dfb728a.sample"
+
+[deps]
+
+source_file="res://assets/sounds/music/samples/looperman-l-1272961-0132303-tidal-japanese-arp.wav"
+dest_files=[ "res://.import/looperman-l-1272961-0132303-tidal-japanese-arp.wav-2a76a72bb7ab2227ac0ee33c1dfb728a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

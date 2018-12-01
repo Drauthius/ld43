@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/looperman-l-1002476-0137824-tin-drum.wav-da31a87b84b3808ccacf1c5583543b60.sample"
+
+[deps]
+
+source_file="res://assets/sounds/music/samples/looperman-l-1002476-0137824-tin-drum.wav"
+dest_files=[ "res://.import/looperman-l-1002476-0137824-tin-drum.wav-da31a87b84b3808ccacf1c5583543b60.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

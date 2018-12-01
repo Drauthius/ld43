@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/looperman-l-2790214-0135833-japanese-lo-fi-piano-melody-loop.wav-ccbfeacabc9f3644bd3531fb413c530d.sample"
+
+[deps]
+
+source_file="res://assets/sounds/music/samples/looperman-l-2790214-0135833-japanese-lo-fi-piano-melody-loop.wav"
+dest_files=[ "res://.import/looperman-l-2790214-0135833-japanese-lo-fi-piano-melody-loop.wav-ccbfeacabc9f3644bd3531fb413c530d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

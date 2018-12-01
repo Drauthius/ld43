@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/looperman-l-2647028-0129458-happy-japanese-shamisen-type-loop.wav-ec046bb1835b85751fa4fdf4dd1cdfa0.sample"
+
+[deps]
+
+source_file="res://assets/sounds/music/samples/looperman-l-2647028-0129458-happy-japanese-shamisen-type-loop.wav"
+dest_files=[ "res://.import/looperman-l-2647028-0129458-happy-japanese-shamisen-type-loop.wav-ec046bb1835b85751fa4fdf4dd1cdfa0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
