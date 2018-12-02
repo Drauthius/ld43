@@ -3,6 +3,7 @@ extends Spatial
 var Monster = preload("res://Monster.tscn")
 var GameOver = preload("res://GameOver.tscn")
 var GearChoice = preload("res://GearChoice.tscn")
+var Gear = preload("res://Gear.gd")
 
 onready var player = $Player
 onready var spawn_points = $SpawnPoints.get_children()
@@ -11,7 +12,7 @@ var monsters_left = 0
 var monsters_alive = 0
 
 var stage = 0
-var stages = [ 1, 2 ]
+var stages = [ 1, 2, 3, 4 ]
 var stage_xp = 0
 
 var is_paused = false
@@ -19,6 +20,9 @@ var gear_choice_dialogue = null
 
 func _ready():
 	randomize()
+	
+	player.equip(Gear.Weapon.generate())
+	
 	new_stage()
 
 func new_stage():
@@ -39,8 +43,17 @@ func stage_completed():
 		player.die()
 		return
 	
+	var tier
+	if stage < 2:
+		tier = randi() % 2
+	elif stage < 4:
+		tier = randi() % 3
+	else:
+		tier = randi() % Gear.Tiers.size()
+	
 	gear_choice_dialogue = GearChoice.instance()
 	add_child(gear_choice_dialogue)
+	gear_choice_dialogue.set_gear(player.weapon, stage_xp, Gear.Weapon.generate(tier))
 	
 	gear_choice_dialogue.connect("sacrifice", self, "_on_GearChoice_sacrifice_event")
 	gear_choice_dialogue.connect("resume", self, "_on_GearChoice_resume_event")
@@ -88,9 +101,10 @@ func _on_Player_death(player):
 func _on_GearChoice_sacrifice_event():
 	pass
 
-func _on_GearChoice_resume_event():
+func _on_GearChoice_resume_event(gear):
 	stage_xp = 0
 	gear_choice_dialogue.queue_free()
 	gear_choice_dialogue = null
 	is_paused = false
+	player.equip(gear)
 	new_stage()

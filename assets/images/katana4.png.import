@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Magic Katana 2.png-c7d58014c537a7de93c35da07a0127ee.stex"
+path="res://.import/katana4.png-0a124c6080f9a2f11695ef424975d61b.stex"
 
 [deps]
 
-source_file="res://assets/images/Magic Katana 2.png"
-dest_files=[ "res://.import/Magic Katana 2.png-c7d58014c537a7de93c35da07a0127ee.stex" ]
+source_file="res://assets/images/katana4.png"
+dest_files=[ "res://.import/katana4.png-0a124c6080f9a2f11695ef424975d61b.stex" ]
 
 [params]
 

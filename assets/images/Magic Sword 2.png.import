@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Basic Katana 1.png-a1a7b2bfb6303e21237643a46ffe10bc.stex"
+path="res://.import/Magic Sword 2.png-f2e370ac704dcad7b8d69974fa309f79.stex"
 
 [deps]
 
-source_file="res://assets/images/Basic Katana 1.png"
-dest_files=[ "res://.import/Basic Katana 1.png-a1a7b2bfb6303e21237643a46ffe10bc.stex" ]
+source_file="res://assets/images/Magic Sword 2.png"
+dest_files=[ "res://.import/Magic Sword 2.png-f2e370ac704dcad7b8d69974fa309f79.stex" ]
 
 [params]
 

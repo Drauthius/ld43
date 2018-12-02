@@ -3,39 +3,48 @@ extends MarginContainer
 var Vanished = preload("res://scenes/Vanished.tscn")
 
 signal sacrifice
-signal resume
+signal resume(gear)
 
 onready var current_gear = $"VBoxContainer/HBoxContainer/CurrentGear"
 onready var new_gear = $"VBoxContainer/HBoxContainer/NewGear"
+onready var tween = $Tween
 
 var sacrificed = false
+var xp = 0
 
-var Gear = preload("res://Gear.gd")
 func _ready():
-	randomize()
-	var weapon = Gear.Weapon.new()
-	weapon.max_level = 2
-	weapon.xp_to_level = 100
-	weapon.attack_damage = Vector2(4, 6)
-	weapon.attack_damage_growth = Vector2(0.5, 1)
-	weapon.set_xp(10)
-	current_gear.fill(weapon, 100)
-	new_gear.fill_hidden(Gear.Weapon.generate(Gear.TIER_MAGIC))
+	var pos = self.rect_global_position
+	# Update position directly, to avoid one frame of the old value.
+	rect_global_position = Vector2(0, -self.rect_size.y)
+	tween.interpolate_property(self, "rect_global_position", Vector2(0, -self.rect_size.y), pos, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	tween.start()
+
+func set_gear(gear, xp, new):
+	self.xp = xp
+	current_gear.fill(gear)
+	new_gear.fill_hidden(new)
 
 func _on_CurrentGear_sacrifice():
-	new_gear.update_button()
-	sacrifice(current_gear)
+	sacrifice(current_gear, new_gear)
 	new_gear.reveal()
+	
+	var pos = new_gear.rect_global_position - Vector2(current_gear.rect_size.x / 2, 0)
+	tween.interpolate_property(new_gear, "rect_global_position", new_gear.rect_global_position, pos, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	tween.start()
 
 func _on_NewGear_sacrifice():
-	current_gear.update_button()
-	sacrifice(new_gear)
+	sacrifice(new_gear, current_gear)
+	
+	var pos = current_gear.rect_global_position + Vector2(new_gear.rect_size.x / 2, 0)
+	tween.interpolate_property(current_gear, "rect_global_position", current_gear.rect_global_position, pos, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	tween.start()
 
-func sacrifice(card):
+func sacrifice(card, other):
 	if sacrificed:
-		emit_signal("resume")
+		emit_signal("resume", card.gear)
 		return
 	
+	other.update_button()
 	card.hide_button()
 	card.modulate = Color(0, 0, 0, 0)
 	var particles = Vanished.instance()
@@ -45,3 +54,7 @@ func sacrifice(card):
 	particles.one_shot = true
 	sacrificed = true
 	emit_signal("sacrifice")
+
+func _on_Tween_tween_completed(object, key):
+	if not sacrificed:
+		current_gear.gain_xp(xp)

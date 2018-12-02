@@ -9,6 +9,7 @@ class Gear:
 	var xp_this_level = 0
 	var xp_to_level
 	var tier = TIER_NORMAL
+	var icon = null
 	
 	var health = 0
 	var lph = 0
@@ -42,12 +43,19 @@ class Weapon:
 		if attack_damage[0] > attack_damage[1]:
 			attack_damage[1] = attack_damage[0]
 	
-	static func generate(tier):
+	static func generate(tier = -1):
 		var weapon = new()
 		weapon.tier = tier
 		var num_properties
 		
 		match tier:
+			-1:
+				weapon.icon = preload("res://assets/images/Basic Sword 1.png")
+				weapon.max_level = 2
+				weapon.xp_to_level = 500
+				weapon.attack_damage = Vector2(3, 5)
+				weapon.attack_damage_growth = Vector2(0, 1)
+				num_properties = 0
 			TIER_NORMAL:
 				weapon.max_level = randi() % 2 + 1 # 1-2
 				weapon.xp_to_level = (randi() % 3 + 1) * 500 # 500/1000/1500/2000
@@ -91,5 +99,8 @@ class Weapon:
 		
 		if weapon.attack_damage[0] > weapon.attack_damage[1]:
 			weapon.attack_damage[1] = weapon.attack_damage[0]
+		if weapon.max_level == 1:
+			weapon.xp_this_level = 10
+			weapon.xp_to_level = 10
 		
 		return weapon

@@ -6,8 +6,9 @@
 [node name="Monster" instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
-health = 60
+health = 15
 move_speed = 150
-attack_damage = Vector2( 5, 10 )
+attack_damage = Vector2( 4, 8 )
+xp_worth = 150
 
 

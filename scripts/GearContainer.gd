@@ -5,10 +5,10 @@ signal sacrifice
 var Gear = preload("res://Gear.gd")
 
 var ICONS = {
-	Gear.TIER_NORMAL: preload("res://assets/images/Basic Katana 1.png"),
-	Gear.TIER_MAGIC: preload("res://assets/images/Magic Katana 1.png"),
-	Gear.TIER_RARE: preload("res://assets/images/Rare Sword 1.png"),
-	Gear.TIER_LEGENDARY: preload("res://assets/images/Legendary Sword 1.png")
+	Gear.TIER_NORMAL: [preload("res://assets/images/Basic Sword 1.png"), preload("res://assets/images/Basic Sword 2.png")],
+	Gear.TIER_MAGIC: [preload("res://assets/images/Magic Sword 1.png"), preload("res://assets/images/Magic Sword 2.png")],
+	Gear.TIER_RARE: [preload("res://assets/images/Rare Sword 1.png"), preload("res://assets/images/Rare Sword 2.png")],
+	Gear.TIER_LEGENDARY: [preload("res://assets/images/Legendary Sword 1.png"), preload("res://assets/images/Legendary Sword 2.png")]
 }
 
 onready var header = $"MarginContainer/VBoxContainer/Header"
@@ -21,30 +21,39 @@ onready var tween = $Tween
 
 var gear
 
-func fill(gear, xp):
+func fill(gear):
 	self.gear = gear
 	
-	set_icon(gear.tier)
+	if not gear.icon:
+		gear.icon = get_icon(gear.tier)
+	
+	set_icon(gear.icon)
+	
 	update_xp_bar(gear)
 	update_level_text(gear)
 	update_description_text(gear)
-	
-	if xp > 0:
-		# Only called once?
-		#tween.interpolate_method(gear, "set_xp", gear.total_xp, gear.total_xp + xp, xp / 40, Tween.TRANS_LINEAR, Tween.EASE_IN)
-		#tween.connect("tween_step", self, "_on_XPBar_tween_step")
-		tween.interpolate_method(self, "update_xp", gear.total_xp, gear.total_xp + xp, xp / 40, Tween.TRANS_LINEAR, Tween.EASE_IN)
-		tween.start()
 
 func fill_hidden(gear):
 	self.gear = gear
 	
-	set_icon(gear.tier)
+	if not gear.icon:
+		gear.icon = get_icon(gear.tier)
+	
+	set_icon(gear.icon)
+	
 	update_level_text(gear, true)
 	update_description_text(gear, true)
 
+func gain_xp(xp):
+	if xp > 0:
+		# Only called once?
+		#tween.interpolate_method(gear, "set_xp", gear.total_xp, gear.total_xp + xp, xp / 40, Tween.TRANS_LINEAR, Tween.EASE_IN)
+		#tween.connect("tween_step", self, "_on_XPBar_tween_step")
+		tween.interpolate_method(self, "update_xp", gear.total_xp, gear.total_xp + xp, xp / 200.0, Tween.TRANS_LINEAR, Tween.EASE_IN)
+		tween.start()
+
 func reveal():
-	fill(self.gear, 0)
+	fill(gear)
 
 func hide_button():
 	button.hide()
@@ -55,8 +64,14 @@ func update_button():
 func _on_Sacrifice_button_up():
 	emit_signal("sacrifice")
 
-func set_icon(tier):
-	icon.set_texture(ICONS[tier])
+func get_icon(tier):
+	var textures = ICONS[tier]
+	var texture = textures[randi() % textures.size()]
+	icon.set_texture(texture)
+	return texture
+
+func set_icon(texture):
+	icon.set_texture(texture)
 
 func update_xp(xp):
 	var level_before = gear.level

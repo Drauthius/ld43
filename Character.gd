@@ -73,14 +73,19 @@ func process_attack(delta):
 			handle_attack()
 		is_moving = false
 
+func update_health(amount):
+	current_health = min(current_health + amount, health)
+	
+	health_bar.value = current_health
+	health_bar.visible = current_health != health
+
 func on_damage_taken(amount):
 	if is_dead:
 		return
 	
-	health_bar.show()
-	print("HIT ", amount, "! ", current_health - amount, " left")
-	current_health -= amount
-	health_bar.value = current_health
+	print(self.name, " got HIT for ", amount, "! ", current_health - amount, "/", health, " left")
+	update_health(-amount)
+	
 	if current_health <= 0:
 		print("death")
 		die()
@@ -92,3 +97,17 @@ func die():
 	
 	emit_signal("death", self)
 	queue_free()
+
+func increase_health(amount):
+	print(self.name, " got HEAL for ", amount, "! ", current_health + amount, "/", health, " left")
+	update_health(amount)
+
+func increase_maximum_health(amount):
+	health += amount
+	health_bar.max_value = health
+	update_health(amount)
+
+func decrease_maximum_health(amount):
+	health -= amount
+	health_bar.max_value = health
+	update_health(0)

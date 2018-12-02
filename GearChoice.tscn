@@ -3,7 +3,7 @@
 [ext_resource path="res://scripts/GearChoice.gd" type="Script" id=1]
 [ext_resource path="res://scenes/GearContainer.tscn" type="PackedScene" id=2]
 
-[node name="GearChoice" type="MarginContainer" index="0"]
+[node name="GearChoice" type="MarginContainer"]
 
 anchor_left = 0.5
 anchor_top = 0.5
@@ -76,8 +76,19 @@ size_flags_horizontal = 2
 size_flags_vertical = 10
 _sections_unfolded = [ "Size Flags" ]
 
+[node name="Tween" type="Tween" parent="." index="1"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
 [connection signal="sacrifice" from="VBoxContainer/HBoxContainer/CurrentGear" to="." method="_on_CurrentGear_sacrifice"]
 
 [connection signal="sacrifice" from="VBoxContainer/HBoxContainer/NewGear" to="." method="_on_NewGear_sacrifice"]
+
+[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
 
 
