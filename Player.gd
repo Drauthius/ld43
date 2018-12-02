@@ -13,29 +13,25 @@ func _ready():
 #func _input_event(camera, event, click_position, click_normal, shape_idx):
 	#_on_Ground_input_event(camera, event, click_position, click_normal, shape_idx)
 
-func _on_Ground_input_event(camera, event, click_position, click_normal, shape_idx):
-	if is_dead:
-		return
-	if attack_state == ATTACK_PERFORM:
-		return
-	
-	if Input.is_mouse_button_pressed(1):
-		target = null
-		target_position = click_position
-		is_attacking = false
-		is_moving = true
-		attack_state = null
-		timer.stop()
+func move_to(position):
+	if is_dead or attack_state == ATTACK_PERFORM:
+		return # Busy
+		
+	target = null
+	target_position = position
+	is_attacking = false
+	is_moving = true
+	attack_state = null
+	timer.stop()
 
-func _on_Monster_clicked(monster):
-	if is_dead:
-		return
+func attack_monster(monster):
+	if is_dead or attack_state == ATTACK_PERFORM:
+		return # Busy
 	if target and target.get_ref() == monster:
-		return
-	if attack_state == ATTACK_PERFORM:
-		return
+		return # Already the current target
 	
 	target = weakref(monster)
+	target_position = null
 	is_attacking = true
 	is_moving = true
 	attack_state = null
