@@ -1,6 +1,14 @@
 extends "res://Character.gd"
 
-signal game_over
+var Gear = preload("res://Gear.gd")
+
+onready var weapon = Gear.Weapon.new()
+
+func _ready():
+	weapon.level = 1
+	weapon.max_level = 1
+	weapon.xp = 0
+	weapon.attack_damage = Vector2(8, 12)
 
 #func _input_event(camera, event, click_position, click_normal, shape_idx):
 	#_on_Ground_input_event(camera, event, click_position, click_normal, shape_idx)
@@ -69,4 +77,4 @@ func die():
 	attack_state = null
 	timer.stop()
 	
-	emit_signal("game_over")
+	emit_signal("death", self)

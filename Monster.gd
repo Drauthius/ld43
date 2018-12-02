@@ -1,5 +1,7 @@
 extends "res://Character.gd"
 
+export (int, 0, 1000) var xp_worth = 35
+
 signal on_clicked
 
 var player

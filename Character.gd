@@ -23,6 +23,8 @@ onready var camera = $"../Player/Camera"
 onready var health_bar_pos = $HealthBarPosition
 onready var health_bar = $"HealthBarPosition/HealthBar"
 
+signal death(node)
+
 func _ready():
 	timer.connect("timeout", self, "handle_attack")
 	health_bar.value = health
@@ -72,14 +74,21 @@ func process_attack(delta):
 		is_moving = false
 
 func on_damage_taken(amount):
+	if is_dead:
+		return
+	
 	health_bar.show()
-	print("HIT! ", amount)
+	print("HIT ", amount, "! ", current_health - amount, " left")
 	current_health -= amount
 	health_bar.value = current_health
 	if current_health <= 0:
 		print("death")
-		is_dead = true
 		die()
+		is_dead = true
 
 func die():
+	if is_dead:
+		return
+	
+	emit_signal("death", self)
 	queue_free()
