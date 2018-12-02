@@ -1,5 +1,7 @@
 extends KinematicBody
 
+const GRAVITY = -1
+
 export (int, 1, 1000) var health = 100
 export (int, 1, 1000) var move_speed = 200
 export (Vector2) var attack_damage = Vector2(10, 20)
@@ -49,12 +51,13 @@ func process_movement(delta):
 		return
 
 	var vel = target_position - get_global_transform().origin
-	vel.y = -1
+	vel.y = 0
 	if vel.length_squared() < 0.01:
 		target = null
 		target_position = null
 		return
 	
+	vel.y = GRAVITY
 	vel = vel.normalized() * move_speed * delta;
 	move_and_slide(vel)
 
