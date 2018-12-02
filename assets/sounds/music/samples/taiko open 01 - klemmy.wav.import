@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/taiko open 01 - klemmy.wav-ce7976135ee59d40185b0ae473a51637.sample"
+
+[deps]
+
+source_file="res://assets/sounds/music/samples/taiko open 01 - klemmy.wav"
+dest_files=[ "res://.import/taiko open 01 - klemmy.wav-ce7976135ee59d40185b0ae473a51637.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

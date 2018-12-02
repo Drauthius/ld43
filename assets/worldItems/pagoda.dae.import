@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/pagoda.dae-82f70eedade630a9433980bf37461cd3.scn"
+path="res://.import/pagoda.dae-5f0713831d9a4b5682d279d3bd733b66.scn"
 
 [deps]
 
-source_file="res://assets/pagoda.dae"
-dest_files=[ "res://.import/pagoda.dae-82f70eedade630a9433980bf37461cd3.scn" ]
+source_file="res://assets/worldItems/pagoda.dae"
+dest_files=[ "res://.import/pagoda.dae-5f0713831d9a4b5682d279d3bd733b66.scn" ]
 
 [params]
 
