@@ -1,0 +1,29 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/pagoda 2 UV__Normal.png-aaa0ec23367827ab3e7a9bc38106b27c.stex"
+
+[deps]
+
+source_file="res://assets/worldItems/pagoda 2 UV__Normal.png"
+dest_files=[ "res://.import/pagoda 2 UV__Normal.png-aaa0ec23367827ab3e7a9bc38106b27c.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0
