@@ -9,7 +9,6 @@ script = ExtResource( 2 )
 health = 15
 move_speed = 150
 attack_damage = Vector2( 4, 8 )
-life_per_hit = 0
 xp_worth = 150
 
 
