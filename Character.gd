@@ -57,21 +57,31 @@ func process_movement(delta):
 	if vel.length_squared() < 0.01:
 		target = null
 		target_position = null
+		stop()
 		return
 	
 	vel.y = GRAVITY
 	vel = vel.normalized() * move_speed * delta;
 	move_and_slide(vel)
+	
+	if has_node("Samurai"):
+		$Samurai.look_at(target_position, Vector3(0, 1, 0))
 
 func process_attack(delta):
 	if not is_attacking or target == null:
 		return
 	
 	if get_global_transform().origin.distance_squared_to(target_position) < attack_range_squared:
+		if has_node("Samurai") and (attack_state != ATTACK_PERFORM or attack_state != ATTACK_END):
+			$Samurai.look_at(target_position, Vector3(0, 1, 0))
+			
 		if attack_state == null or attack_state == ATTACK_END:
 			attack_state = ATTACK_START
 			handle_attack()
 		is_moving = false
+
+func stop():
+	pass
 
 func update_health(amount):
 	current_health = min(current_health + amount, health)
