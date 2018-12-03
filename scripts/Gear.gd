@@ -1,5 +1,5 @@
 enum Tiers {TIER_NORMAL, TIER_MAGIC, TIER_RARE, TIER_LEGENDARY}
-enum Properties {PROPERTY_HEALTH, PROPERTY_LPH, PROPERTY_DUD}
+enum Properties {PROPERTY_HEALTH, PROPERTY_LPH, PROPERTY_CRIT, PROPERTY_DUD}
 
 class Gear:
 	var level = 1
@@ -35,6 +35,7 @@ class Weapon:
 	extends Gear
 	var attack_damage = Vector2()
 	var attack_damage_growth = Vector2()
+	var critical_hit_chance = 0
 	
 	func level_up():
 		.level_up()
@@ -92,6 +93,9 @@ class Weapon:
 				PROPERTY_LPH:
 					weapon.properties.append({ PROPERTY_LPH: randi() % 2 + 1 }) # 1-2
 					weapon.lph += weapon.properties.back()[PROPERTY_LPH]
+				PROPERTY_CRIT:
+					weapon.properties.append({ PROPERTY_CRIT: randi() % 3 * 5 }) # 0/5/10
+					weapon.critical_hit_chance += weapon.properties.back()[PROPERTY_CRIT]
 				PROPERTY_DUD:
 					weapon.properties.append({ PROPERTY_DUD: null })
 				_:

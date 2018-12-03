@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/worldItems/SmallStones.scn" type="PackedScene" id=1]
+
+[sub_resource type="CapsuleShape" id=1]
+
+radius = 2.0
+height = 2.0
+
+[node name="SmallStones" type="StaticBody"]
+
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+friction = 1.0
+bounce = 0.0
+constant_linear_velocity = Vector3( 0, 0, 0 )
+constant_angular_velocity = Vector3( 0, 0, 0 )
+
+[node name="GeoSphere003" parent="." index="0" instance=ExtResource( 1 )]
+
+[node name="CollisionShape" type="CollisionShape" parent="." index="1"]
+
+transform = Transform( -0.000220223, 0, 1, 0, 1, 0, -1, 0, -0.000220223, 0.326308, -0.248612, 0 )
+shape = SubResource( 1 )
+disabled = false
+
+

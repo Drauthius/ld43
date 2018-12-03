@@ -9,7 +9,9 @@ func equip(gear):
 		if weapon != gear:
 			if weapon != null:
 				decrease_maximum_health(weapon.health)
+				critical_hit_chance -= weapon.critical_hit_chance
 			increase_maximum_health(gear.health)
+			critical_hit_chance += gear.critical_hit_chance
 		
 		weapon = gear
 		attack_damage = weapon.attack_damage
@@ -50,5 +52,6 @@ func die():
 	is_attacking = false
 	attack_state = null
 	#timer.stop()
-	
+
+func _on_Samurai_dead():
 	emit_signal("death", self)

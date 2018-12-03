@@ -9,6 +9,7 @@ input_ray_pickable = false
 script = ExtResource( 2 )
 move_speed = 225
 attack_range_squared = 4
+critical_hit_chance = 5
 
 [node name="Camera" type="Camera" parent="." index="3"]
 

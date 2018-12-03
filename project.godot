@@ -10,7 +10,7 @@ config_version=3
 
 [application]
 
-config/name="ld43"
+config/name="Noroi"
 run/main_scene="res://scenes/MainMenu.tscn"
 config/icon="res://assets/icon.png"
 

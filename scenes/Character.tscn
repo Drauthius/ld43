@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/Character.gd" type="Script" id=1]
-[ext_resource path="res://assets/Samurai.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/samurai/Samurai.tscn" type="PackedScene" id=2]
 
 [sub_resource type="CapsuleShape" id=1]
 
@@ -56,6 +56,7 @@ move_speed = 200
 attack_damage = Vector2( 10, 20 )
 attack_range_squared = 2
 attack_speed = 1.0
+critical_hit_chance = 0
 life_per_hit = 0
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="0"]
@@ -103,5 +104,7 @@ _sections_unfolded = [ "Mouse", "Rect", "Visibility", "custom_styles" ]
 [connection signal="attack_end" from="Samurai" to="." method="_on_Samurai_attack_end"]
 
 [connection signal="attack_performed" from="Samurai" to="." method="_on_Samurai_attack_performed"]
+
+[connection signal="dead" from="Samurai" to="." method="_on_Samurai_dead"]
 
 
