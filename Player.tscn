@@ -2,58 +2,7 @@
 
 [ext_resource path="res://Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
-
-[sub_resource type="SpatialMaterial" id=1]
-
-render_priority = 0
-flags_transparent = false
-flags_unshaded = false
-flags_vertex_lighting = false
-flags_no_depth_test = false
-flags_use_point_size = false
-flags_world_triplanar = false
-flags_fixed_size = false
-flags_albedo_tex_force_srgb = false
-vertex_color_use_as_albedo = false
-vertex_color_is_srgb = false
-params_diffuse_mode = 0
-params_specular_mode = 0
-params_blend_mode = 0
-params_cull_mode = 0
-params_depth_draw_mode = 0
-params_line_width = 1.0
-params_point_size = 1.0
-params_billboard_mode = 0
-params_grow = false
-params_use_alpha_scissor = false
-albedo_color = Color( 0.0432434, 0.453718, 0.851562, 1 )
-metallic = 0.0
-metallic_specular = 0.5
-metallic_texture_channel = 0
-roughness = 0.0
-roughness_texture_channel = 0
-emission_enabled = false
-normal_enabled = false
-rim_enabled = false
-clearcoat_enabled = false
-anisotropy_enabled = false
-ao_enabled = false
-depth_enabled = false
-subsurf_scatter_enabled = false
-transmission_enabled = false
-refraction_enabled = false
-detail_enabled = false
-uv1_scale = Vector3( 1, 1, 1 )
-uv1_offset = Vector3( 0, 0, 0 )
-uv1_triplanar = false
-uv1_triplanar_sharpness = 1.0
-uv2_scale = Vector3( 1, 1, 1 )
-uv2_offset = Vector3( 0, 0, 0 )
-uv2_triplanar = false
-uv2_triplanar_sharpness = 1.0
-proximity_fade_enable = false
-distance_fade_enable = false
-_sections_unfolded = [ "Albedo" ]
+[ext_resource path="res://assets/samurai2.tscn" type="PackedScene" id=3]
 
 [node name="Player" instance=ExtResource( 1 )]
 
@@ -61,11 +10,17 @@ input_ray_pickable = false
 script = ExtResource( 2 )
 attack_range_squared = 5
 
-[node name="MeshInstance" parent="." index="1"]
+[node name="CollisionShape" parent="." index="0"]
 
-material/0 = SubResource( 1 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.995887, 0 )
 
-[node name="Camera" type="Camera" parent="." index="2"]
+[node name="MeshInstance" parent="CollisionShape" index="0"]
+
+visible = false
+
+[node name="Samurai" parent="." index="3" instance=ExtResource( 3 )]
+
+[node name="Camera" type="Camera" parent="." index="4"]
 
 transform = Transform( 1, 0, 0, 0, 0.838671, 0.544639, 0, -0.544639, 0.838671, 0, 13.1036, 19.2131 )
 keep_aspect = 1
@@ -81,5 +36,11 @@ size = 12.0
 near = 0.05
 far = 200.0
 _sections_unfolded = [ "Transform" ]
+
+[connection signal="attack_contact" from="Samurai" to="." method="_on_Samurai_attack_contact"]
+
+[connection signal="attack_end" from="Samurai" to="." method="_on_Samurai_attack_end"]
+
+[connection signal="attack_performed" from="Samurai" to="." method="_on_Samurai_attack_performed"]
 
 

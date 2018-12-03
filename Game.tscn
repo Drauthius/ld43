@@ -11,7 +11,7 @@
 [ext_resource path="res://scenes/Stone5.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/Torii.tscn" type="PackedScene" id=10]
 
-[node name="Game" type="Spatial" index="0"]
+[node name="Game" type="Spatial"]
 
 script = ExtResource( 1 )
 
