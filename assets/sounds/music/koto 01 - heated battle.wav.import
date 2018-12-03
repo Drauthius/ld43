@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/koto 01 - heated battle.wav-2d7d027d7a9fbc9a39a36aeee3b85ae3.sample"
+
+[deps]
+
+source_file="res://assets/sounds/music/koto 01 - heated battle.wav"
+dest_files=[ "res://.import/koto 01 - heated battle.wav-2d7d027d7a9fbc9a39a36aeee3b85ae3.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

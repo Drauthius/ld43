@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Ground.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/Stone3.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/Stone4.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/Stone5.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/Torii.tscn" type="PackedScene" id=10]
 
 [node name="Game" type="Spatial" index="0"]
 
@@ -20,7 +21,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0470657, -0.521761, -0.00665
 
 [node name="Pagoda" parent="." index="1" instance=ExtResource( 3 )]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.88, 0, -2.095 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.88, 1.35132, -2.095 )
 
 [node name="Player" parent="." index="2" instance=ExtResource( 4 )]
 
@@ -56,7 +57,7 @@ editor/display_folded = true
 
 [node name="SpawnPoint1" type="Position3D" parent="SpawnPoints" index="0"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.74637, -4.76837e-07, -9.61515 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.74637, -4.76837e-007, -9.61515 )
 
 [node name="SpawnPoint2" type="Position3D" parent="SpawnPoints" index="1"]
 
@@ -90,8 +91,10 @@ directional_shadow_depth_range = 0
 directional_shadow_max_distance = 200.0
 _sections_unfolded = [ "Directional Shadow", "Shadow" ]
 
-[connection signal="input_event" from="Ground" to="." method="_on_Ground_input_event"]
+[node name="Torii" parent="." index="6" instance=ExtResource( 10 )]
 
-[connection signal="death" from="Player" to="." method="_on_Player_death"]
+transform = Transform( 0.838578, 0, -0.544782, 0, 1, 0, 0.544782, 0, 0.838578, 0, 0, 18.8314 )
+
+[connection signal="input_event" from="Ground" to="." method="_on_Ground_input_event"]
 
 

@@ -3,7 +3,7 @@
 [ext_resource path="res://scripts/GearChoice.gd" type="Script" id=1]
 [ext_resource path="res://scenes/GearContainer.tscn" type="PackedScene" id=2]
 
-[node name="GearChoice" type="MarginContainer"]
+[node name="GearChoice" type="MarginContainer" index="0"]
 
 anchor_left = 0.5
 anchor_top = 0.5
@@ -88,7 +88,5 @@ playback/speed = 1.0
 [connection signal="sacrifice" from="VBoxContainer/HBoxContainer/CurrentGear" to="." method="_on_CurrentGear_sacrifice"]
 
 [connection signal="sacrifice" from="VBoxContainer/HBoxContainer/NewGear" to="." method="_on_NewGear_sacrifice"]
-
-[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
 
 

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/flute 01 - low health.wav-f9e17a5cfeb7c106a56b8dce73c10b78.sample"
+
+[deps]
+
+source_file="res://assets/sounds/music/flute 01 - low health.wav"
+dest_files=[ "res://.import/flute 01 - low health.wav-f9e17a5cfeb7c106a56b8dce73c10b78.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

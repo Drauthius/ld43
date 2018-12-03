@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/drums 01 - menu.wav-72e4fe0f8a244c856ba6b84cf28aea7a.sample"
+
+[deps]
+
+source_file="res://assets/sounds/music/drums 01 - menu.wav"
+dest_files=[ "res://.import/drums 01 - menu.wav-72e4fe0f8a244c856ba6b84cf28aea7a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
