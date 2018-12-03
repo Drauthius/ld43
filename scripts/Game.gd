@@ -2,6 +2,7 @@ extends Spatial
 
 var Monster = preload("res://scenes/Monster.tscn")
 var GameOver = preload("res://scenes/GameOver.tscn")
+var EndGame = preload("res://scenes/EndGame.tscn")
 var GearChoice = preload("res://scenes/GearChoice.tscn")
 var Gear = preload("res://scripts/Gear.gd")
 
@@ -39,14 +40,13 @@ func stage_completed():
 	is_paused = true
 	
 	if stage >= stages.size():
-		print("Weiner!")
-		player.die()
+		add_child(EndGame.instance())
 		return
 	
 	var tier
 	if stage < 2:
 		tier = randi() % 2
-	elif stage < 4:
+	elif stage < 4:	
 		tier = randi() % 3
 	else:
 		tier = randi() % Gear.Tiers.size()
@@ -54,7 +54,7 @@ func stage_completed():
 	gear_choice_dialogue = GearChoice.instance()
 	add_child(gear_choice_dialogue)
 	gear_choice_dialogue.set_gear(player.weapon, stage_xp, Gear.Weapon.generate(tier))
-	
+			
 	gear_choice_dialogue.connect("sacrifice", self, "_on_GearChoice_sacrifice_event")
 	gear_choice_dialogue.connect("resume", self, "_on_GearChoice_resume_event")
 
@@ -71,8 +71,8 @@ func spawn_monster():
 	monsters_left -= 1
 	monsters_alive += 1
 
-func retry():
-	get_tree().reload_current_scene()
+#func retry():
+#	get_tree().reload_current_scene()
 
 func _on_Ground_input_event(camera, event, click_position, click_normal, shape_idx):
 	if is_paused:
@@ -94,9 +94,7 @@ func _on_Monster_death(monster):
 		stage_completed()
 
 func _on_Player_death(player):
-	var game_over = GameOver.instance()
-	add_child(game_over)
-	game_over.connect("retry", self, "retry")
+	add_child(GameOver.instance())
 
 func _on_GearChoice_sacrifice_event():
 	pass
