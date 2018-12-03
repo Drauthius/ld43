@@ -25,3 +25,4 @@ func handle_attack():
 		ATTACK_END:
 			attack_state = null
 			is_moving = true
+			$Samurai.run()

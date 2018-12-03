@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/Character.gd" type="Script" id=1]
-[ext_resource path="res://assets/Samurai.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/samurai/Samurai.tscn" type="PackedScene" id=2]
 
 [sub_resource type="CapsuleShape" id=1]
 
@@ -37,7 +37,7 @@ anti_aliasing = true
 anti_aliasing_size = 1
 _sections_unfolded = [ "Border", "Border Width", "Corner Radius" ]
 
-[node name="Character" type="KinematicBody" index="0"]
+[node name="Character" type="KinematicBody"]
 
 input_ray_pickable = true
 input_capture_on_drag = false
@@ -103,5 +103,7 @@ _sections_unfolded = [ "Mouse", "Rect", "Visibility", "custom_styles" ]
 [connection signal="attack_end" from="Samurai" to="." method="_on_Samurai_attack_end"]
 
 [connection signal="attack_performed" from="Samurai" to="." method="_on_Samurai_attack_performed"]
+
+[connection signal="dead" from="Samurai" to="." method="_on_Samurai_dead"]
 
 

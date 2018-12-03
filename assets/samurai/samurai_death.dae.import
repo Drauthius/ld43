@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/samurai2.dae-2ad85acb1e22a6107d89f0adea00b2b0.scn"
+path="res://.import/samurai_death.dae-626c4a1706343e257645cef66995b455.scn"
 
 [deps]
 
-source_file="res://assets/samurai2.dae"
-dest_files=[ "res://.import/samurai2.dae-2ad85acb1e22a6107d89f0adea00b2b0.scn" ]
+source_file="res://assets/samurai/samurai_death.dae"
+dest_files=[ "res://.import/samurai_death.dae-626c4a1706343e257645cef66995b455.scn" ]
 
 [params]
 

@@ -7,6 +7,7 @@ export (int, 1, 1000) var move_speed = 200
 export (Vector2) var attack_damage = Vector2(10, 20)
 export (int, 1, 100) var attack_range_squared = 2
 export (float, 0.1, 100.0) var attack_speed = 1.0
+export (int, 0, 100) var critical_hit_chance = 0
 export (int, 0, 100) var life_per_hit = 0
 
 onready var current_health = health
@@ -43,19 +44,21 @@ func _physics_process(delta):
 
 func update_target():
 	if target != null:
-		if not target.get_ref():
+		if not target.get_ref() or target.get_ref().is_dead:
 			target = null
 			target_position = null
 		else:
 			target_position = target.get_ref().get_global_transform().origin
 
 func process_movement(delta):
-	if not is_moving or target_position == null:
+	if is_dead or not is_moving or target_position == null:
 		return
-
+	
+	samurai.run()
+	
 	var vel = target_position - get_global_transform().origin
 	vel.y = 0
-	if vel.length_squared() < 0.01:
+	if vel.length_squared() < 0.1:
 		target = null
 		target_position = null
 		samurai.idle()
@@ -63,17 +66,24 @@ func process_movement(delta):
 	
 	vel.y = GRAVITY
 	vel = vel.normalized() * move_speed * delta;
-	move_and_slide(vel, Vector3(0, 1, 0))
+	var remaining = move_and_slide(vel, Vector3(0, 1, 0))
+	if self.name == "Player" and remaining.length_squared() < 1.5:
+		target = null
+		target_position = null
+		samurai.idle()
+		return
 	
 	samurai.look_at(target_position, Vector3(0, 1, 0))
+	samurai.rotate_y(deg2rad(180))
 
 func process_attack(delta):
-	if not is_attacking or target == null:
+	if is_dead or not is_attacking or target == null:
 		return
 	
 	if get_global_transform().origin.distance_squared_to(target_position) < attack_range_squared:
 		if attack_state != ATTACK_PERFORM or attack_state != ATTACK_END:
 			samurai.look_at(target_position, Vector3(0, 1, 0))
+			samurai.rotate_y(deg2rad(180))
 			
 		if attack_state == null or attack_state == ATTACK_END:
 			attack_state = ATTACK_START
@@ -110,8 +120,9 @@ func die():
 	if is_dead:
 		return
 	
+	health_bar.hide()
+	samurai.die()
 	emit_signal("death", self)
-	queue_free()
 
 func increase_health(amount):
 	print(self.name, " got HEAL for ", amount, "! ", current_health + amount, "/", health, " left")
@@ -136,7 +147,11 @@ func _on_Samurai_attack_performed():
 func _on_Samurai_attack_contact(area):
 	attack_state = ATTACK_CONTACT
 	if target and target.get_ref() and area.overlaps_body(target.get_ref()):
-		target.get_ref().on_damage_taken(randf() * (attack_damage[1] - attack_damage[0]) + attack_damage[0])
+		var damage = randf() * (attack_damage[1] - attack_damage[0]) + attack_damage[0]
+		if critical_hit_chance > 0 and randi() % 100 > critical_hit_chance:
+			print("CRIT")
+			damage *= 1.5
+		target.get_ref().on_damage_taken(damage)
 		
 		if life_per_hit > 0:
 			increase_health(life_per_hit)
@@ -145,3 +160,6 @@ func _on_Samurai_attack_contact(area):
 func _on_Samurai_attack_end():
 	attack_state = ATTACK_END # Done attacking
 	handle_attack()
+
+func _on_Samurai_dead():
+	queue_free()

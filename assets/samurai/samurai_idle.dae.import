@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/samurai.dae-c47f8654f47856c262166724295ae4d5.scn"
+path="res://.import/samurai_idle.dae-5bdfe56dd541094d1fa1a459d9f0eee2.scn"
 
 [deps]
 
-source_file="res://assets/samurai.dae"
-dest_files=[ "res://.import/samurai.dae-c47f8654f47856c262166724295ae4d5.scn" ]
+source_file="res://assets/samurai/samurai_idle.dae"
+dest_files=[ "res://.import/samurai_idle.dae-5bdfe56dd541094d1fa1a459d9f0eee2.scn" ]
 
 [params]
 

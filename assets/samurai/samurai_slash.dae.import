@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/Great Sword Run.dae-ea16a27fb492512d749f363305e39795.scn"
+path="res://.import/samurai_slash.dae-4a559824fed01158c8d309b231c7c8a0.scn"
 
 [deps]
 
-source_file="res://assets/Great Sword Run.dae"
-dest_files=[ "res://.import/Great Sword Run.dae-ea16a27fb492512d749f363305e39795.scn" ]
+source_file="res://assets/samurai/samurai_slash.dae"
+dest_files=[ "res://.import/samurai_slash.dae-4a559824fed01158c8d309b231c7c8a0.scn" ]
 
 [params]
 

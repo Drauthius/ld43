@@ -13,12 +13,12 @@ var monsters_left = 0
 var monsters_alive = 0
 
 var stage = 0
-var stages = [ 1, 2, 3, 4, 5, 6 ]
+var stages = [ 1, 2, 3, 3, 4, 5 ]
 var stage_xp = 0
 var stage_growth = {
-	"xp": 5,
-	"health": 5,
-	"attack_damage": Vector2(2, 2)
+	"xp": 50,
+	"health": 2,
+	"attack_damage": Vector2(1, 2)
 }
 var health_per_stage = 15
 
@@ -70,7 +70,7 @@ func spawn_monster():
 	add_child(monster)
 	
 	# Don't place them at the exact same location, or they become one superfast superstrong monster (literally).
-	monster.set_translation(spawn_points[randi() % spawn_points.size()].get_translation() + Vector3(randf() - 0.5, 0.0, randf() - 0.5))
+	monster.set_translation(spawn_points[randi() % spawn_points.size()].get_translation() + Vector3(randf() * 2 - 1, 0.0, randf() * 2 - 1))
 	
 	monster.connect("on_clicked", self, "_on_Monster_clicked")
 	monster.connect("death", self, "_on_Monster_death")
