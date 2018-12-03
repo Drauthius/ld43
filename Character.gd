@@ -62,7 +62,7 @@ func process_movement(delta):
 	
 	vel.y = GRAVITY
 	vel = vel.normalized() * move_speed * delta;
-	move_and_slide(vel)
+	move_and_slide(vel, Vector3(0, 1, 0))
 	
 	if has_node("Samurai"):
 		$Samurai.look_at(target_position, Vector3(0, 1, 0))

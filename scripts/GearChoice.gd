@@ -18,6 +18,9 @@ func _ready():
 	rect_global_position = Vector2(0, -self.rect_size.y)
 	tween.interpolate_property(self, "rect_global_position", Vector2(0, -self.rect_size.y), pos, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	tween.start()
+	
+	current_gear.set_header("Current")
+	new_gear.set_header("New")
 
 func set_gear(gear, xp, new):
 	self.xp = xp
@@ -25,6 +28,10 @@ func set_gear(gear, xp, new):
 	new_gear.fill_hidden(new)
 
 func _on_CurrentGear_sacrifice():
+	if sacrificed:
+		emit_signal("resume", current_gear.gear)
+		return
+	
 	sacrifice(current_gear, new_gear)
 	new_gear.reveal()
 	
@@ -33,6 +40,10 @@ func _on_CurrentGear_sacrifice():
 	tween.start()
 
 func _on_NewGear_sacrifice():
+	if sacrificed:
+		emit_signal("resume", new_gear.gear)
+		return
+		
 	sacrifice(new_gear, current_gear)
 	
 	var pos = current_gear.rect_global_position + Vector2(new_gear.rect_size.x / 2, 0)
@@ -40,10 +51,6 @@ func _on_NewGear_sacrifice():
 	tween.start()
 
 func sacrifice(card, other):
-	if sacrificed:
-		emit_signal("resume", card.gear)
-		return
-	
 	other.update_button()
 	card.hide_button()
 	card.modulate = Color(0, 0, 0, 0)

@@ -21,6 +21,9 @@ onready var tween = $Tween
 
 var gear
 
+func set_header(text):
+	header.text = text
+
 func fill(gear):
 	self.gear = gear
 	
@@ -97,9 +100,9 @@ func update_description_text(gear, hidden = false):
 	description.text = ""
 	if gear is Gear.Weapon:
 		if hidden:
-			description.text += "\n??? - ??? damage"
+			description.text += "??? - ??? damage"
 		else:
-			description.text += "\n%d - %d damage" % [gear.attack_damage[0], gear.attack_damage[1]]
+			description.text += "%d - %d damage" % [gear.attack_damage[0], gear.attack_damage[1]]
 	
 	if hidden:
 		for property in gear.properties:
