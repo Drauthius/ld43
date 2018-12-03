@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/weapon crit.wav-1ca5d4ca8fda22d779be45a2b6a94172.sample"
+
+[deps]
+
+source_file="res://assets/sounds/sfx/weapon crit.wav"
+dest_files=[ "res://.import/weapon crit.wav-1ca5d4ca8fda22d779be45a2b6a94172.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
