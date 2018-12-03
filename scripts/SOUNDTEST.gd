@@ -17,6 +17,6 @@ func _process(delta):
 		SoundService.stop_all_music()
 		pass
 	if (Input.is_key_pressed(KEY_RIGHT)):
-		SoundService.stop_all_music()
+		SoundService.drum_02_start_battle()
 		pass
 	pass
