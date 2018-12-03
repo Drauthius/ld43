@@ -2,17 +2,17 @@
 
 [ext_resource path="res://scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Ground.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/Pagoda.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/Stone1.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/Stone2.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/Stone3.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/Stone4.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/Stone5.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/Torii.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/Pagoda2.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Stone1.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Stone2.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Stone3.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Stone4.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Stone5.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/Torii.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/Pagoda2.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/Mountain.tscn" type="PackedScene" id=11]
 
-[node name="Game" type="Spatial" index="0"]
+[node name="Game" type="Spatial"]
 
 script = ExtResource( 1 )
 
@@ -20,55 +20,93 @@ script = ExtResource( 1 )
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0470657, -0.521761, -0.00665379 )
 
-[node name="Pagoda" parent="." index="1" instance=ExtResource( 3 )]
-
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.88, 1.35132, -2.095 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Player" parent="." index="2" instance=ExtResource( 4 )]
+[node name="Player" parent="." index="1" instance=ExtResource( 3 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.513108, 0 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Stones" type="Spatial" parent="." index="3"]
+[node name="Stones" type="Spatial" parent="." index="2"]
 
-editor/display_folded = true
+[node name="Stone1" parent="Stones" index="0" instance=ExtResource( 4 )]
 
-[node name="Stone1" parent="Stones" index="0" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 0.986418, -0.164254, 0, 0.164254, 0.986418, -12.9569, -0.632354, 8.11546 )
 
-transform = Transform( 1, 0, 0, 0, 0.986418, -0.164254, 0, 0.164254, 0.986418, -15.6513, -0.14924, 8.52285 )
+[node name="Stone2" parent="Stones" index="1" instance=ExtResource( 5 )]
 
-[node name="Stone2" parent="Stones" index="1" instance=ExtResource( 6 )]
+transform = Transform( -0.991796, 0, -0.127829, 0.018711, 0.98923, -0.145174, 0.126452, -0.146374, -0.981114, 2.32349, -0.426415, 13.5558 )
 
-transform = Transform( -0.991796, 0, -0.127829, 0.0321676, 0.96782, -0.249581, 0.123715, -0.251645, -0.95988, 0, -0.586727, 6.61701 )
+[node name="Stone7" parent="Stones" index="2" instance=ExtResource( 5 )]
 
-[node name="Stone3" parent="Stones" index="2" instance=ExtResource( 7 )]
+transform = Transform( -0.992382, -0.11823, -0.0346436, 0.110948, -0.97988, 0.165909, -0.0535616, 0.160801, 0.985533, -6.07315, -0.230646, 2.37221 )
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.66826, -0.410725, -4.44617 )
+[node name="Stone3" parent="Stones" index="3" instance=ExtResource( 6 )]
 
-[node name="Stone4" parent="Stones" index="3" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8136, -0.410725, -7.37067 )
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.01655, -0.386525, -8.05303 )
+[node name="Stone4" parent="Stones" index="4" instance=ExtResource( 7 )]
 
-[node name="Stone5" parent="Stones" index="4" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.72999, -0.386527, -12.1869 )
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.10293, -0.309545, 3.53453 )
+[node name="Stone5" parent="Stones" index="5" instance=ExtResource( 8 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8524, -0.309545, 5.81929 )
+
+[node name="Stone6" parent="Stones" index="6" instance=ExtResource( 8 )]
+
+transform = Transform( 1, 0, 0, 0, -0.981615, -0.190872, 0, 0.190872, -0.981615, -8.40055, 0.519644, -7.64747 )
+
+[node name="Gates" type="Spatial" parent="." index="3"]
+
+[node name="Torii" parent="Gates" index="0" instance=ExtResource( 9 )]
+
+transform = Transform( 0.809906, 0, -0.885467, 0, 1.2, 0, 0.885467, 0, 0.809906, 12.6376, -0.567683, -12.4232 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Torii2" parent="Gates" index="1" instance=ExtResource( 9 )]
+
+transform = Transform( -0.91105, 0, -0.781018, 0, 1.2, 0, 0.781018, 0, -0.91105, -9.25626, -0.563884, -15.9636 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Torii3" parent="Gates" index="2" instance=ExtResource( 9 )]
+
+transform = Transform( 0.895261, 0, 0.799067, 0, 1.2, 0, -0.799067, 0, 0.895261, 10.9566, -0.452853, 11.3347 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Torii4" parent="Gates" index="3" instance=ExtResource( 9 )]
+
+transform = Transform( 0.807198, 0, -0.887937, 0, 1.2, 0, 0.887937, 0, 0.807198, -8.65617, -0.519527, 13.4569 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Torii5" parent="Gates" index="4" instance=ExtResource( 9 )]
+
+transform = Transform( -0.446897, 0, -1.11368, 0, 1.2, 0, 1.11368, 0, -0.446897, -15.521, -0.552037, -1.63547 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="SpawnPoints" type="Spatial" parent="." index="4"]
 
+editor/display_folded = true
+
 [node name="SpawnPoint1" type="Position3D" parent="SpawnPoints" index="0"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.41321, -4.76837e-07, -10.9668 )
+transform = Transform( 1, 0, 0, 0, 0.998598, 0.0529387, 0, -0.0529387, 0.998598, -8.47512, 1.43051e-06, -14.5902 )
 
 [node name="SpawnPoint2" type="Position3D" parent="SpawnPoints" index="1"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0256, 0, 9.8561 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.6658, -1.90735e-06, -10.9102 )
 
-[node name="Torii" parent="." index="5" instance=ExtResource( 10 )]
+[node name="SpawnPoint3" type="Position3D" parent="SpawnPoints" index="2"]
 
-transform = Transform( 0.444013, 0, -0.89602, 0, 1, 0, 0.89602, 0, 0.444013, 7.21878, -0.544558, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4366, 0, 10.8118 )
 
-[node name="DirectionalLight" type="DirectionalLight" parent="." index="6"]
+[node name="SpawnPoint4" type="Position3D" parent="SpawnPoints" index="3"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.95883, 0.0484886, 12.9279 )
+
+[node name="SpawnPoint5" type="Position3D" parent="SpawnPoints" index="4"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.6467, 3.8147e-06, -1.17325 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="." index="5"]
 
 transform = Transform( -0.134875, 0.869096, 0.475899, 0.119765, -0.462468, 0.87851, 0.983598, 0.175485, -0.0417118, 15.5195, 15.0856, -8.93511 )
 layers = 1
@@ -96,9 +134,15 @@ directional_shadow_depth_range = 0
 directional_shadow_max_distance = 200.0
 _sections_unfolded = [ "Directional Shadow", "Shadow" ]
 
-[node name="Pagoda2" parent="." index="7" instance=ExtResource( 11 )]
+[node name="Pagoda2" parent="." index="6" instance=ExtResource( 10 )]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.873, 0, 0 )
+transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 14.4165, -0.426601, 0.253107 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Mountain" parent="." index="7" instance=ExtResource( 11 )]
+
+transform = Transform( 0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0 )
+_sections_unfolded = [ "Transform" ]
 
 [connection signal="input_event" from="Ground" to="." method="_on_Ground_input_event"]
 

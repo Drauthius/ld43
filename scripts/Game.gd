@@ -13,8 +13,13 @@ var monsters_left = 0
 var monsters_alive = 0
 
 var stage = 0
-var stages = [ 1, 2, 3, 4 ]
+var stages = [ 1, 2, 3, 4, 5, 6 ]
 var stage_xp = 0
+var stage_growth = {
+	"xp": 5,
+	"health": 5,
+	"attack_damage": Vector2(2, 2)
+}
 var health_per_stage = 15
 
 var is_paused = false
@@ -70,6 +75,7 @@ func spawn_monster():
 	monster.connect("on_clicked", self, "_on_Monster_clicked")
 	monster.connect("death", self, "_on_Monster_death")
 	
+	monster.upgrade(stage_growth["xp"] * stage, stage_growth["health"] * stage, stage_growth["attack_damage"] * stage)
 	monster.hunt(player)
 	
 	monsters_left -= 1

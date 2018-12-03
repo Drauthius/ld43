@@ -11,6 +11,13 @@ var ICONS = {
 	Gear.TIER_LEGENDARY: [preload("res://assets/images/Legendary Sword 1.png"), preload("res://assets/images/Legendary Sword 2.png")]
 }
 
+var tier_name = {
+	Gear.TIER_NORMAL: "Common",
+	Gear.TIER_MAGIC: "Magic",
+	Gear.TIER_RARE: "Rare",
+	Gear.TIER_LEGENDARY: "Legendary"
+}
+
 onready var header = $"MarginContainer/VBoxContainer/Header"
 onready var icon = $"MarginContainer/VBoxContainer/Icon"
 onready var xp_bar = $"MarginContainer/VBoxContainer/XPBar"
@@ -89,10 +96,15 @@ func update_xp_bar(gear):
 	xp_bar.max_value = gear.xp_to_level
 
 func update_level_text(gear, hidden = false):
-	if hidden:
-		level.text = "Level ???"
+	if gear.tier != -1:
+		level.text = "[" + tier_name[gear.tier] + "] "
 	else:
-		level.text =  "Level %d" % gear.level
+		level.text = "[Basic] "
+	
+	if hidden:
+		level.text += "Level ???"
+	else:
+		level.text +=  "Level %d" % gear.level
 		if gear.level == gear.max_level:
 			level.text += " (MAX)"
 

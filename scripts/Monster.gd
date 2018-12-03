@@ -10,6 +10,10 @@ func hunt(target):
 	is_moving = true
 	is_attacking = true
 
+func upgrade(xp, health, damage):
+	xp_worth += xp
+	attack_damage += damage
+
 func _input_event(camera, event, click_position, click_normal, shape_idx):
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == BUTTON_LEFT:
 		emit_signal("on_clicked", self)
