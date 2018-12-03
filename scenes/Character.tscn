@@ -37,7 +37,7 @@ anti_aliasing = true
 anti_aliasing_size = 1
 _sections_unfolded = [ "Border", "Border Width", "Corner Radius" ]
 
-[node name="Character" type="KinematicBody"]
+[node name="Character" type="KinematicBody" index="0"]
 
 input_ray_pickable = true
 input_capture_on_drag = false
@@ -56,6 +56,7 @@ move_speed = 200
 attack_damage = Vector2( 10, 20 )
 attack_range_squared = 2
 attack_speed = 1.0
+critical_hit_chance = 0
 life_per_hit = 0
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="0"]

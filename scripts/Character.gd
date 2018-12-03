@@ -120,6 +120,7 @@ func die():
 	if is_dead:
 		return
 	
+	$CollisionShape.disabled = true
 	health_bar.hide()
 	samurai.die()
 	emit_signal("death", self)

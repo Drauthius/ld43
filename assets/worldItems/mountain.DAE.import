@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/brick1.dae-375a8597adfb0580b99b52ddfe8049b9.scn"
+path="res://.import/mountain.DAE-d00e850b010747cec4f80f6e36746054.scn"
 
 [deps]
 
-source_file="res://assets/worldItems/brick1.dae"
-dest_files=[ "res://.import/brick1.dae-375a8597adfb0580b99b52ddfe8049b9.scn" ]
+source_file="res://assets/worldItems/mountain.DAE"
+dest_files=[ "res://.import/mountain.DAE-d00e850b010747cec4f80f6e36746054.scn" ]
 
 [params]
 

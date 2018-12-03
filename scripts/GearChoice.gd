@@ -35,8 +35,10 @@ func _on_CurrentGear_sacrifice():
 	sacrifice(current_gear, new_gear)
 	new_gear.reveal()
 	
-	var pos = new_gear.rect_global_position - Vector2(current_gear.rect_size.x / 2, 0)
-	tween.interpolate_property(new_gear, "rect_global_position", new_gear.rect_global_position, pos, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	#var pos = new_gear.rect_global_position - Vector2(current_gear.rect_size.x / 2, 0)
+	#tween.interpolate_property(new_gear, "rect_global_position", new_gear.rect_global_position, pos, 0.6, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	var pos = rect_global_position - Vector2(current_gear.rect_size.x / 2, 0)
+	tween.interpolate_property(self, "rect_global_position", rect_global_position, pos, 0.6, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	tween.start()
 
 func _on_NewGear_sacrifice():
@@ -46,16 +48,19 @@ func _on_NewGear_sacrifice():
 		
 	sacrifice(new_gear, current_gear)
 	
-	var pos = current_gear.rect_global_position + Vector2(new_gear.rect_size.x / 2, 0)
-	tween.interpolate_property(current_gear, "rect_global_position", current_gear.rect_global_position, pos, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	#var pos = current_gear.rect_global_position + Vector2(new_gear.rect_size.x / 2, 0)
+	#tween.interpolate_property(current_gear, "rect_global_position", current_gear.rect_global_position, pos, 0.6, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	var pos = rect_global_position + Vector2(new_gear.rect_size.x / 2, 0)
+	tween.interpolate_property(self, "rect_global_position", rect_global_position, pos, 0.6, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	tween.start()
 
 func sacrifice(card, other):
 	other.update_button()
 	card.hide_button()
+	card.set_mouse_filter(MOUSE_FILTER_IGNORE) # Doesn't work
 	card.modulate = Color(0, 0, 0, 0)
 	var particles = Vanished.instance()
-	card.get_parent().add_child(particles)
+	get_parent().add_child(particles)
 	particles.set_position(card.get_global_position() + card.get_size() / Vector2(2, 2))
 	particles.emitting = true
 	particles.one_shot = true

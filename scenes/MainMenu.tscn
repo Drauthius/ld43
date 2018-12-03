@@ -4,7 +4,7 @@
 [ext_resource path="res://scripts/MainMenu.gd" type="Script" id=2]
 [ext_resource path="res://assets/ttf/menu_font.tres" type="DynamicFont" id=3]
 
-[node name="MainMenu" type="TextureRect"]
+[node name="MainMenu" type="TextureRect" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0

@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/brick2.dae-12b49d89283335ab50bde1f18ec13b60.scn"
+path="res://.import/sakura2.DAE-7c4afeef8cfd4b6f1208ee5774de6278.scn"
 
 [deps]
 
-source_file="res://assets/worldItems/brick2.dae"
-dest_files=[ "res://.import/brick2.dae-12b49d89283335ab50bde1f18ec13b60.scn" ]
+source_file="res://assets/worldItems/sakura2.DAE"
+dest_files=[ "res://.import/sakura2.DAE-7c4afeef8cfd4b6f1208ee5774de6278.scn" ]
 
 [params]
 

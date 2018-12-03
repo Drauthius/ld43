@@ -16,7 +16,7 @@ var stage = 0
 var stages = [ 1, 2, 3, 3, 4, 5 ]
 var stage_xp = 0
 var stage_growth = {
-	"xp": 50,
+	"xp": 100,
 	"health": 2,
 	"attack_damage": Vector2(1, 2)
 }
