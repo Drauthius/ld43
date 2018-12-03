@@ -2,7 +2,7 @@ extends TextureRect
 
 signal sacrifice
 
-var Gear = preload("res://Gear.gd")
+var Gear = preload("res://scripts/Gear.gd")
 
 var ICONS = {
 	Gear.TIER_NORMAL: [preload("res://assets/images/Basic Sword 1.png"), preload("res://assets/images/Basic Sword 2.png")],

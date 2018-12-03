@@ -1,9 +1,9 @@
 extends Spatial
 
-var Monster = preload("res://Monster.tscn")
-var GameOver = preload("res://GameOver.tscn")
-var GearChoice = preload("res://GearChoice.tscn")
-var Gear = preload("res://Gear.gd")
+var Monster = preload("res://scenes/Monster.tscn")
+var GameOver = preload("res://scenes/GameOver.tscn")
+var GearChoice = preload("res://scenes/GearChoice.tscn")
+var Gear = preload("res://scripts/Gear.gd")
 
 onready var player = $Player
 onready var spawn_points = $SpawnPoints.get_children()

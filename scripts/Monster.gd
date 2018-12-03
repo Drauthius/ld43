@@ -1,4 +1,4 @@
-extends "res://Character.gd"
+extends "res://scripts/Character.gd"
 
 export (int, 0, 1000) var xp_worth = 35
 

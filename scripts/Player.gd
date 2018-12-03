@@ -1,6 +1,6 @@
-extends "res://Character.gd"
+extends "res://scripts/Character.gd"
 
-var Gear = preload("res://Gear.gd")
+var Gear = preload("res://scripts/Gear.gd")
 
 var weapon
 
