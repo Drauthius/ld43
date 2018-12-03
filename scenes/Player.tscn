@@ -1,28 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
-[ext_resource path="res://assets/samurai2.tscn" type="PackedScene" id=3]
-
-
 
 [node name="Player" instance=ExtResource( 1 )]
 
 input_ray_pickable = false
 script = ExtResource( 2 )
-attack_range_squared = 5
+attack_range_squared = 4
+life_per_hit = 0
 
-[node name="CollisionShape" parent="." index="0"]
-
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.995887, 0 )
-
-[node name="MeshInstance" parent="CollisionShape" index="0"]
-
-visible = false
-
-[node name="Samurai" parent="." index="3" instance=ExtResource( 3 )]
-
-[node name="Camera" type="Camera" parent="." index="4"]
+[node name="Camera" type="Camera" parent="." index="3"]
 
 transform = Transform( 1, 0, 0, 0, 0.838671, 0.544639, 0, -0.544639, 0.838671, 0, 13.1036, 19.2131 )
 keep_aspect = 1
@@ -38,11 +26,5 @@ size = 12.0
 near = 0.05
 far = 200.0
 _sections_unfolded = [ "Transform" ]
-
-[connection signal="attack_contact" from="Samurai" to="." method="_on_Samurai_attack_contact"]
-
-[connection signal="attack_end" from="Samurai" to="." method="_on_Samurai_attack_end"]
-
-[connection signal="attack_performed" from="Samurai" to="." method="_on_Samurai_attack_performed"]
 
 

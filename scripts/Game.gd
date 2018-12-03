@@ -15,6 +15,7 @@ var monsters_alive = 0
 var stage = 0
 var stages = [ 1, 2, 3, 4 ]
 var stage_xp = 0
+var health_per_stage = 15
 
 var is_paused = false
 var gear_choice_dialogue = null
@@ -30,6 +31,7 @@ func new_stage():
 	if stage != 0:
 		print("NEW STAGE ", stage)
 	
+	player.increase_health(health_per_stage)
 	monsters_left = stages[stage]
 	while monsters_left > 0:
 		spawn_monster()
@@ -67,6 +69,8 @@ func spawn_monster():
 	
 	monster.connect("on_clicked", self, "_on_Monster_clicked")
 	monster.connect("death", self, "_on_Monster_death")
+	
+	monster.hunt(player)
 	
 	monsters_left -= 1
 	monsters_alive += 1
