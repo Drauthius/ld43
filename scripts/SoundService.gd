@@ -1,26 +1,29 @@
 extends Node
 
-var drum_01_main_menu = AudioStreamPlayer.new()
-var drum_02_start_battle = AudioStreamPlayer.new()
-var drum_03_survive_x_waves = AudioStreamPlayer.new()
-var drum_04_survive_2x_waves = AudioStreamPlayer.new()
-var flue_01_lohealth = AudioStreamPlayer.new()
-var koto_01_heated_battle = AudioStreamPlayer.new()
+var sounds = {
+	drum_01_main_menu: AudioStreamPlayer.new(),
+	drum_02_start_battle: AudioStreamPlayer.new(),
+	drum_03_survive_x_waves: AudioStreamPlayer.new(),
+	drum_04_survive_2x_waves: AudioStreamPlayer.new(),
+	flue_01_lohealth: AudioStreamPlayer.new(),
+	koto_01_heated_battle: AudioStreamPlayer.new()
+}
+
+var current_bg_music
+var next_bg_music = null
 
 func _ready():
-	drum_01_main_menu.stream = preload("res://assets/sounds/music/drums 01 - menu.wav")
-	drum_02_start_battle.stream = preload("res://assets/sounds/music/drums 02 - start battle.wav")
-	drum_03_survive_x_waves.stream = preload("res://assets/sounds/music/drums 03 - survive x waves.wav")
-	drum_04_survive_2x_waves.stream = preload("res://assets/sounds/music/drums 04 - survive 2x waves.wav")
-	flue_01_lohealth.stream = preload("res://assets/sounds/music/flute 01 - low health.wav")
-	koto_01_heated_battle.stream = preload("res://assets/sounds/music/koto 01 - heated battle.wav")
+	sounds.drum_01_main_menu.stream = preload("res://assets/sounds/music/drums 01 - menu.wav")
+	sounds.drum_02_start_battle.stream = preload("res://assets/sounds/music/drums 02 - start battle.wav")
+	sounds.drum_03_survive_x_waves.stream = preload("res://assets/sounds/music/drums 03 - survive x waves.wav")
+	sounds.drum_04_survive_2x_waves.stream = preload("res://assets/sounds/music/drums 04 - survive 2x waves.wav")
+	sounds.flue_01_lohealth.stream = preload("res://assets/sounds/music/flute 01 - low health.wav")
+	sounds.koto_01_heated_battle.stream = preload("res://assets/sounds/music/koto 01 - heated battle.wav")
 	
-	add_child(drum_01_main_menu)
-	add_child(drum_02_start_battle)
-	add_child(drum_03_survive_x_waves)
-	add_child(drum_04_survive_2x_waves)
-	add_child(flue_01_lohealth)
-	add_child(koto_01_heated_battle)
+	for sound in sounds:
+		add_child(sound)
+		sound.connect("finished", self, "_on_sound_finished")
+	
 	#something
 #	physics_start_player.stream = preload("res://music/physics_start.wav")
 
@@ -31,6 +34,11 @@ func stop_all_music():
 	drum_04_survive_2x_waves.stop()
 	flue_01_lohealth.stop()
 	koto_01_heated_battle.stop()
+	
+
+func _on_sound_finished():
+	pass
+
 
 func drum_01_main_menu():
 	drum_01_main_menu.play()
