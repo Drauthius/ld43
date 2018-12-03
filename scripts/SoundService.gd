@@ -21,7 +21,7 @@ func _ready():
 	add_child(drum_04_survive_2x_waves)
 	add_child(flue_01_lohealth)
 	add_child(koto_01_heated_battle)
-	
+	#something
 #	physics_start_player.stream = preload("res://music/physics_start.wav")
 
 func stop_all_music():
