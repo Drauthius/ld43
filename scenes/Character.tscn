@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/Character.gd" type="Script" id=1]
-[ext_resource path="res://assets/samurai2.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/Samurai.tscn" type="PackedScene" id=2]
 
 [sub_resource type="CapsuleShape" id=1]
 
