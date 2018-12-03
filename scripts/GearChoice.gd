@@ -18,6 +18,9 @@ func _ready():
 	rect_global_position = Vector2(0, -self.rect_size.y)
 	tween.interpolate_property(self, "rect_global_position", Vector2(0, -self.rect_size.y), pos, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	tween.start()
+	
+	current_gear.set_header("Current")
+	new_gear.set_header("New")
 
 func set_gear(gear, xp, new):
 	self.xp = xp
