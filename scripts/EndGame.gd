@@ -9,5 +9,5 @@ func _ready():
 	tween.interpolate_property(self, "rect_global_position", Vector2(0, -rect_size.y), pos, 0.6, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	tween.start()
 
-func _on_Retry_button_up():
+func _on_Restart_button_up():
 	get_tree().change_scene("res://scenes/Game.tscn")

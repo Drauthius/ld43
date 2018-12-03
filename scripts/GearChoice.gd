@@ -13,10 +13,10 @@ var sacrificed = false
 var xp = 0
 
 func _ready():
-	var pos = self.rect_global_position
+	var pos = rect_global_position
 	# Update position directly, to avoid one frame of the old value.
-	rect_global_position = Vector2(0, -self.rect_size.y)
-	tween.interpolate_property(self, "rect_global_position", Vector2(0, -self.rect_size.y), pos, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	rect_global_position = Vector2(0, -rect_size.y)
+	tween.interpolate_property(self, "rect_global_position", Vector2(0, -rect_size.y), pos, 0.6, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	tween.start()
 	
 	current_gear.set_header("Current")
