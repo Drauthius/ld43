@@ -5,6 +5,7 @@ var GameOver = preload("res://scenes/GameOver.tscn")
 var EndGame = preload("res://scenes/EndGame.tscn")
 var GearChoice = preload("res://scenes/GearChoice.tscn")
 var Gear = preload("res://scripts/Gear.gd")
+onready var SoundService = $"/root/SoundService"
 
 onready var player = $Player
 onready var spawn_points = $SpawnPoints.get_children()
@@ -31,6 +32,8 @@ func _ready():
 	player.equip(Gear.Weapon.generate())
 	
 	new_stage()
+	
+	SoundService.start_battle()
 
 func new_stage():
 	if stage != 0:
@@ -53,9 +56,11 @@ func stage_completed():
 	var tier
 	if stage < 2:
 		tier = randi() % 2
-	elif stage < 4:	
+	elif stage < 4:
+		SoundService.survive_x_waves()
 		tier = randi() % 3
 	else:
+		SoundService.survive_2x_waves()
 		tier = randi() % Gear.Tiers.size()
 	
 	gear_choice_dialogue = GearChoice.instance()
@@ -107,6 +112,7 @@ func _on_Player_death(player):
 	add_child(GameOver.instance())
 
 func _on_GearChoice_sacrifice_event():
+	SoundService.weapon_sacrifice()
 	pass
 
 func _on_GearChoice_resume_event(gear):

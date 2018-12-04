@@ -35,12 +35,13 @@ func _ready():
 	loops.flute_01_lohealth.stream = preload("res://assets/sounds/music/flute 01 - low health.wav")
 	loops.koto_01_heated_battle.stream = preload("res://assets/sounds/music/koto 01 - heated battle.wav")
 	
-	sfx.death_scene_transition = preload("res://assets/sounds/sfx/death scene transition drums.wav")
-	sfx.weapon_sacrifice = preload("res://assets/sounds/sfx/weapon sacrifice.wav")
+	sfx.death_scene_transition.stream = preload("res://assets/sounds/sfx/death scene transition drums.wav")
+	sfx.weapon_sacrifice.stream = preload("res://assets/sounds/sfx/weapon sacrifice.wav")
 	
 	for key in loops:
 		add_child(loops[key])
 		loops[key].connect("finished", self, "_on_sound_finished")
+		loops[key].set_bus("Music")
 		
 	for key in sfx:
 		add_child(sfx[key])
@@ -82,6 +83,7 @@ func play_or_queue(loops):
 		for key in current_bg_music:
 			if current_bg_music[key] != null:
 				current_bg_music[key].play()
+				print("bus ", current_bg_music[key].get_bus() )
 	elif at_least_one_is_null:
 		pass
 	for key in loops:

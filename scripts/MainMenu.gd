@@ -1,6 +1,9 @@
 extends TextureRect
 
+onready var SoundService = $"/root/SoundService"
+
 func _ready():
+	SoundService.main_menu()
 	pass # Set up sound here
 
 func _on_Start_button_up():

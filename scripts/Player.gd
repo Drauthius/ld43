@@ -2,6 +2,8 @@ extends "res://scripts/Character.gd"
 
 var Gear = preload("res://scripts/Gear.gd")
 
+onready var SoundService = $"/root/SoundService"
+
 var weapon
 
 func equip(gear):
@@ -44,6 +46,9 @@ func attack_monster(monster):
 func die():
 	if is_dead:
 		return
+	
+	SoundService.stop_all_music()
+	SoundService.death_scene_transition()
 	
 	$Samurai.die()
 	target = null

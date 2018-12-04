@@ -24,5 +24,8 @@ func _process(delta):
 	if (Input.is_key_pressed(KEY_D)):
 		SoundService.survive_2x_waves()
 		pass
+	if (Input.is_key_pressed(KEY_F)):
+		SoundService.death_scene_transition()
+		pass
 	pass
 	
