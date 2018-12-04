@@ -1,0 +1,8 @@
+This project includes different licenses, and listed below.
+
+Component                  Directory           License
+----------------------------------------------------------------------
+Noroi source               .                   GPLv3
+Noroi art                  assets/             Creative Common BY-SA 4.0
+Noroi sound                assets/sounds/      Creative Common BY-SA 4.0
+Fonts                      assets/ttf/         100% free
