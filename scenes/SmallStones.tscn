@@ -7,9 +7,9 @@
 radius = 2.0
 height = 2.0
 
-[node name="SmallStones" type="StaticBody"]
+[node name="SmallStones" type="StaticBody" index="0"]
 
-input_ray_pickable = true
+input_ray_pickable = false
 input_capture_on_drag = false
 collision_layer = 1
 collision_mask = 1

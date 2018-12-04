@@ -27,6 +27,7 @@ onready var button = $"MarginContainer/VBoxContainer/Button"
 onready var tween = $Tween
 
 var gear
+var final_xp
 
 func set_header(text):
 	header.text = text
@@ -55,11 +56,12 @@ func fill_hidden(gear):
 	update_description_text(gear, true)
 
 func gain_xp(xp):
-	if xp > 0:
+	if xp > 0 and gear.level != gear.max_level:
+		final_xp = gear.total_xp + xp
 		# Only called once?
 		#tween.interpolate_method(gear, "set_xp", gear.total_xp, gear.total_xp + xp, xp / 40, Tween.TRANS_LINEAR, Tween.EASE_IN)
 		#tween.connect("tween_step", self, "_on_XPBar_tween_step")
-		tween.interpolate_method(self, "update_xp", gear.total_xp, gear.total_xp + xp, xp / 200.0, Tween.TRANS_LINEAR, Tween.EASE_IN)
+		tween.interpolate_method(self, "update_xp", gear.total_xp, final_xp, min(xp / 250.0, 3.0), Tween.TRANS_LINEAR, Tween.EASE_IN)
 		tween.start()
 
 func reveal():
@@ -72,6 +74,8 @@ func update_button():
 	button.text = "Continue"
 
 func _on_Sacrifice_button_up():
+	if final_xp and gear.total_xp != final_xp:
+		gear.set_xp(final_xp)
 	emit_signal("sacrifice")
 
 func get_icon(tier):
@@ -92,8 +96,8 @@ func update_xp(xp):
 		update_description_text(gear)
 
 func update_xp_bar(gear):
-	xp_bar.value = gear.xp_this_level
 	xp_bar.max_value = gear.xp_to_level
+	xp_bar.value = gear.xp_this_level
 
 func update_level_text(gear, hidden = false):
 	if gear.tier != -1:
@@ -122,6 +126,8 @@ func update_description_text(gear, hidden = false):
 	else:
 		if gear.health > 0:
 			description.text += "\n+%d health" % gear.health
+		if gear.critical_hit_chance > 0:
+			description.text += "\n+%d%% chance to crit" % gear.critical_hit_chance
 		if gear.lph > 0:
 			description.text += "\n+%d life per hit" % gear.lph
 

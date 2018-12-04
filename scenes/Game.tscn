@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Ground.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://scenes/Sakura.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/Sakura2.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/MountainPiece.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/House.tscn" type="PackedScene" id=16]
 
 [node name="Game" type="Spatial"]
 
@@ -52,11 +53,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6665, -0.642834, -8.72086 )
 
 [node name="Stone4" parent="Stones" index="4" instance=ExtResource( 7 )]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.72999, -0.386527, -12.1869 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.56566, -0.386527, -7.05932 )
 
 [node name="Stone5" parent="Stones" index="5" instance=ExtResource( 8 )]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.512804, -0.501797, 13.4359 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.40993, -0.501797, 13.6962 )
 
 [node name="Stone6" parent="Stones" index="6" instance=ExtResource( 8 )]
 
@@ -156,6 +157,7 @@ _sections_unfolded = [ "Directional Shadow", "Shadow" ]
 [node name="Pagoda2" parent="." index="6" instance=ExtResource( 11 )]
 
 transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 15.0279, -0.426601, 0.253107 )
+input_ray_pickable = false
 _sections_unfolded = [ "Transform" ]
 
 [node name="Mountain" parent="." index="7" instance=ExtResource( 12 )]
@@ -165,7 +167,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Sakura" parent="." index="8" instance=ExtResource( 13 )]
 
-transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 5.00991, -0.458962, 13.9887 )
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 4.88741, -0.458962, 11.3128 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Sakura2" parent="." index="9" instance=ExtResource( 14 )]
@@ -188,6 +190,11 @@ transform = Transform( 0.0640883, 0, -0.997944, 0, 1, 0, 0.997944, 0, 0.0640883,
 [node name="MountainPiece4" parent="." index="13" instance=ExtResource( 15 )]
 
 transform = Transform( 0.0640883, 0, -0.997944, 0, 1, 0, 0.997944, 0, 0.0640883, 24.4572, 0, 21.7146 )
+
+[node name="House" parent="." index="14" instance=ExtResource( 16 )]
+
+transform = Transform( 0.610231, 0, -0.342955, 0, 0.7, 0, 0.342955, 0, 0.610231, -0.822281, -0.507967, -16.3535 )
+_sections_unfolded = [ "Transform" ]
 
 [connection signal="input_event" from="Ground" to="." method="_on_Ground_input_event"]
 

@@ -1,5 +1,5 @@
 enum Tiers {TIER_NORMAL, TIER_MAGIC, TIER_RARE, TIER_LEGENDARY}
-enum Properties {PROPERTY_HEALTH, PROPERTY_LPH, PROPERTY_CRIT, PROPERTY_DUD}
+enum Properties {PROPERTY_HEALTH, PROPERTY_CRIT, PROPERTY_LPH, PROPERTY_DUD}
 
 class Gear:
 	var level = 1
@@ -12,30 +12,34 @@ class Gear:
 	var icon = null
 	
 	var health = 0
+	var critical_hit_chance = 0
 	var lph = 0
 	var properties = []
 	
 	func set_xp(value):
 		assert(value >= total_xp)
+		if level >= max_level:
+			return
+		
 		var diff = value - total_xp
 		total_xp = value
 		xp_this_level += diff
 		if xp_this_level >= xp_to_level:
-			if level < max_level:
-				level_up()
+			level_up()
 	
 	func level_up():
 		level += 1
 		if level < max_level:
-			# Leave values on max if level can't be increased further.
 			xp_this_level -= xp_to_level
 			xp_to_level *= xp_growth
+		else:
+			# Leave values on max if level can't be increased further.
+			xp_this_level = xp_to_level
 
 class Weapon:
 	extends Gear
 	var attack_damage = Vector2()
 	var attack_damage_growth = Vector2()
-	var critical_hit_chance = 0
 	
 	func level_up():
 		.level_up()
@@ -72,13 +76,13 @@ class Weapon:
 			TIER_RARE:
 				weapon.max_level = randi() % 4 + 1 # 1-4
 				weapon.xp_to_level = (randi() % 5 + 2) * 500 # 1000/1500/2000/2500/3000
-				weapon.attack_damage = Vector2(randf() * 4 + 4, randf() * 4 + 6) # (4-8) - (6-10)
+				weapon.attack_damage = Vector2(randf() * 3 + 4, randf() * 4 + 6) # (4-7) - (6-10)
 				weapon.attack_damage_growth = Vector2(randf() * 2 + 1, randf() * 3 + 1) # (1-3) - (1-4)
 				num_properties = randi() % 2 + 2 # 2-3
 			TIER_LEGENDARY:
 				weapon.max_level = randi() % 5 + 1 # 1-4
 				weapon.xp_to_level = (randi() % 6 + 3) * 500 # 1500/2000/2500/3000/3500/4000
-				weapon.attack_damage = Vector2(randf() * 5 + 6, randf() * 6 + 8) # (6-11) - (8-14)
+				weapon.attack_damage = Vector2(randf() * 4 + 5, randf() * 4 + 8) # (5-9) - (8-12)
 				weapon.attack_damage_growth = Vector2(randf() * 3 + 2, randf() * 4 + 2) # (2-5) - (2-6)
 				num_properties = randi() % 3 + 2 # 2-4
 			_:
@@ -90,12 +94,12 @@ class Weapon:
 				PROPERTY_HEALTH:
 					weapon.properties.append({ PROPERTY_HEALTH: randi() % 10 + 5 }) # 5-15
 					weapon.health += weapon.properties.back()[PROPERTY_HEALTH]
-				PROPERTY_LPH:
-					weapon.properties.append({ PROPERTY_LPH: randi() % 2 + 1 }) # 1-2
-					weapon.lph += weapon.properties.back()[PROPERTY_LPH]
 				PROPERTY_CRIT:
 					weapon.properties.append({ PROPERTY_CRIT: randi() % 3 * 5 }) # 0/5/10
 					weapon.critical_hit_chance += weapon.properties.back()[PROPERTY_CRIT]
+				PROPERTY_LPH:
+					weapon.properties.append({ PROPERTY_LPH: randi() % 2 + 1 }) # 1-2
+					weapon.lph += weapon.properties.back()[PROPERTY_LPH]
 				PROPERTY_DUD:
 					weapon.properties.append({ PROPERTY_DUD: null })
 				_:

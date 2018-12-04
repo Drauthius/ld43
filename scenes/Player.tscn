@@ -9,11 +9,11 @@ input_ray_pickable = false
 script = ExtResource( 2 )
 move_speed = 225
 attack_range_squared = 4
-critical_hit_chance = 5
+critical_hit_chance = 10
 
 [node name="Camera" type="Camera" parent="." index="3"]
 
-transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 13.1036, 13.0073 )
+transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 17.168, 16.2456 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null

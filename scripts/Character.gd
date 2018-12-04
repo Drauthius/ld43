@@ -104,7 +104,7 @@ func handle_attack():
 func update_health(amount):
 	current_health = min(current_health + amount, health)
 	
-	health_bar.value = current_health
+	health_bar.value = ceil(current_health)
 	health_bar.visible = current_health != health
 
 func on_damage_taken(amount):
@@ -152,7 +152,7 @@ func _on_Samurai_attack_contact(area):
 	attack_state = ATTACK_CONTACT
 	if target and target.get_ref() and area.overlaps_body(target.get_ref()):
 		var damage = randf() * (attack_damage[1] - attack_damage[0]) + attack_damage[0]
-		if critical_hit_chance > 0 and randi() % 100 > critical_hit_chance:
+		if critical_hit_chance > 0 and randf() < critical_hit_chance / 100.0:
 			print("CRIT")
 			damage *= 1.5
 			SoundService.weapon_crit()

@@ -150,7 +150,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource( 4 )
 stretch_mode = 0
-_sections_unfolded = [ "Size Flags" ]
+_sections_unfolded = [ "Margin", "Size Flags" ]
 
 [node name="XPBar" type="ProgressBar" parent="MarginContainer/VBoxContainer" index="2"]
 

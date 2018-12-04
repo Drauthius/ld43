@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/worldItems/House.scn" type="PackedScene" id=1]
+
+[sub_resource type="BoxShape" id=1]
+
+extents = Vector3( 4, 4, 4 )
+
+[sub_resource type="BoxShape" id=2]
+
+extents = Vector3( 2.41083, 1.5264, 1.84355 )
+
+[node name="House" type="StaticBody" index="0"]
+
+input_ray_pickable = false
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+friction = 1.0
+bounce = 0.0
+constant_linear_velocity = Vector3( 0, 0, 0 )
+constant_angular_velocity = Vector3( 0, 0, 0 )
+
+[node name="house" parent="." index="0" instance=ExtResource( 1 )]
+
+transform = Transform( 2.44405, 0, 0, 0, 0.631373, 1.05037, 1e-06, -1.35398, 0.489796, -3.88688, 7.87738, 1.67706 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="CollisionShape" type="CollisionShape" parent="." index="1"]
+
+transform = Transform( 0.749456, 0, 0, 0, 1, 0, 0, 0, 0.969537, -0.686394, 3.97571, -0.0131781 )
+shape = SubResource( 1 )
+disabled = false
+
+[node name="CollisionShape2" type="CollisionShape" parent="." index="2"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.10742, 1.4793, -0.0875872 )
+shape = SubResource( 2 )
+disabled = false
+
+

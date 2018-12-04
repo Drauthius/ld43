@@ -48,6 +48,7 @@ func die():
 	SoundService.stop_all_music()
 	SoundService.death_scene_transition()
 	
+	health_bar.hide()
 	$Samurai.die()
 	target = null
 	target_position = null
