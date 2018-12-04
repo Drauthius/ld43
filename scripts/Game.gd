@@ -50,6 +50,8 @@ func stage_completed():
 	is_paused = true
 	
 	if stage >= stages.size():
+		SoundService.stop_all_music()
+		SoundService.endgame()
 		add_child(EndGame.instance())
 		return
 	

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/click-old1.wav-b1b95be806a1970ddf6d117d22422863.sample"
+
+[deps]
+
+source_file="res://assets/sounds/sfx/click-old1.wav"
+dest_files=[ "res://.import/click-old1.wav-b1b95be806a1970ddf6d117d22422863.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

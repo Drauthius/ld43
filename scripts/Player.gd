@@ -2,8 +2,6 @@ extends "res://scripts/Character.gd"
 
 var Gear = preload("res://scripts/Gear.gd")
 
-onready var SoundService = $"/root/SoundService"
-
 var weapon
 
 func equip(gear):

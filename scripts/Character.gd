@@ -10,6 +10,7 @@ export (float, 0.1, 100.0) var attack_speed = 1.0
 export (int, 0, 100) var critical_hit_chance = 0
 export (int, 0, 100) var life_per_hit = 0
 
+
 onready var current_health = health
 var target = null
 var target_position = null
@@ -25,6 +26,8 @@ onready var health_bar_pos = $HealthBarPosition
 onready var health_bar = $"HealthBarPosition/HealthBar"
 
 onready var samurai = $Samurai
+
+onready var SoundService = $"/root/SoundService"
 
 signal death(node)
 
@@ -152,6 +155,9 @@ func _on_Samurai_attack_contact(area):
 		if critical_hit_chance > 0 and randi() % 100 > critical_hit_chance:
 			print("CRIT")
 			damage *= 1.5
+			SoundService.weapon_crit()
+		else:
+			SoundService.weapon_hit()
 		target.get_ref().on_damage_taken(damage)
 		
 		if life_per_hit > 0:

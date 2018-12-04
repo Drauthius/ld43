@@ -11,7 +11,11 @@ var loops = {
 
 var sfx = {
 	"death_scene_transition": AudioStreamPlayer.new(),
-	"weapon_sacrifice": AudioStreamPlayer.new()
+	"weapon_sacrifice": AudioStreamPlayer.new(),
+	"click":  AudioStreamPlayer.new(),
+	"weapon_crit": AudioStreamPlayer.new(),
+	"weapon_hit": AudioStreamPlayer.new(),
+	"endgame": AudioStreamPlayer.new()
 }
 
 
@@ -37,6 +41,10 @@ func _ready():
 	
 	sfx.death_scene_transition.stream = preload("res://assets/sounds/sfx/death scene transition drums.wav")
 	sfx.weapon_sacrifice.stream = preload("res://assets/sounds/sfx/weapon sacrifice.wav")
+	sfx.click.stream = preload("res://assets/sounds/sfx/click.wav")
+	sfx.weapon_crit.stream = preload("res://assets/sounds/sfx/weapon crit.wav")
+	sfx.weapon_hit.stream = preload("res://assets/sounds/sfx/weapon hit.wav")
+	sfx.endgame.stream = preload("res://assets/sounds/sfx/washoya.wav")
 	
 	for key in loops:
 		add_child(loops[key])
@@ -128,3 +136,15 @@ func death_scene_transition():
 func weapon_sacrifice():
 	sfx.weapon_sacrifice.play()
 	pass
+
+func click():
+	sfx.click.play()
+
+func weapon_crit():
+	sfx.weapon_crit.play()
+	
+func weapon_hit():
+	sfx.weapon_hit.play()
+
+func endgame():
+	sfx.endgame.play()
